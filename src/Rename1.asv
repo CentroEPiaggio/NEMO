@@ -1,0 +1,32 @@
+%%%Rename1--------first culture%%%%%
+
+cd('C:\Documents and Settings\chiara\Documenti\tesi_triennale_mia\NEMO\PLOT\DATA_MATRIX\DMColtura01\*.mat');
+
+load DM01.mat
+DM01 = DM;
+clear DM;
+sav
+
+load DM02.mat
+DM02 = DM;
+clear DM;
+
+load DM03.mat
+DM03 = DM;
+clear DM;
+
+load DM04.mat
+DM04 = DM;
+clear DM;
+
+load DM05.mat
+DM05 = DM;
+clear DM;
+
+load DM06.mat
+DM06 = DM;
+clear DM;
+
+load DM07.mat
+DM07 = DM;
+clear DM;

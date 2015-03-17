@@ -1,0 +1,36 @@
+%%%%Renaming datamatrix%%%%
+
+%first colture
+clear all;
+
+fileF = dir('C:\Documents and Settings\chiara\Documenti\tesi_triennale_mia\NEMO\PLOT\DATA_MATRIX\DMColtura01\*.mat');
+fileNames = {fileF.name}';
+nu=numel(fileNames);
+
+answer = strcat('Please, rename all the datamatrix the program automatically import'...
+              'as DM and the cell number: examples datamatrix0101-->DM01');
+h = msgbox(answer);
+uiwait(h)
+
+for i = 1:nu
+    uiimport (fileNames{i});
+    workspace;
+    pause(10)
+    
+end;
+
+
+%second colture
+clear all;
+
+fileF = dir('C:\Documents and Settings\chiara\Documenti\tesi_triennale_mia\NEMO\PLOT\DATA_MATRIX\DMColtura02\*.mat');
+fileNames = {fileF.name}'
+nu=numel(fileNames);
+
+for i = 1:nu
+    uiimport (fileNames{nu})
+    helpdlg('Please, rename this file in the workspace with the name DM', nu);
+    workspace;
+    
+end;
+

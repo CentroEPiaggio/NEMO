@@ -1,0 +1,25 @@
+%%%%%ANALISI DELLE COMPONENTI PRINCIPALI%%%%%
+
+load datamatrixPCA.mat
+
+DMp1 = [DMp, ones(7,1)];
+
+pca(DMp1, 0.9);
+
+cd('./risultatiPCA');
+saveas(gcf,'cerrchio_oggetti.bmp','bmp')
+close(gfc)
+saveas(gcf,'PCA_oggetti.bmp','bmp')
+cd('..');
+
+DMp2 = [DMp', ones(8,1)];
+
+pca(DMp2, 0.9);
+
+cd('./risultatiPCA')
+saveas(gcf,'cerrchio_oggetti.bmp','bmp')
+close(gfc)
+saveas(gcf,'PCA_oggetti.bmp','bmp')
+cd('..');
+
+

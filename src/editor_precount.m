@@ -1,0 +1,49 @@
+function [numberOfNeurons] = editor_precount (neuron, pathname, filename)
+
+if isempty(lasterror) == 0   %c'è errore
+    
+    [filename, pathname] = uigetfile({'*.jpg;*.tif;*.bmp;*.png;*.gif','All Image Files'}, 'Pick an image');
+           
+    str = strcat(pathname, filename);    %complete directory
+    
+    neuron = imread(str);
+
+    
+end;
+
+dirOutput = dir(fullfile(pathname,'p_*.*'));
+
+fileNames = {dirOutput.name}' ;
+         
+nu=numel(fileNames)
+
+ S = char(fileNames{nu})
+[a b c d gmax] = strread(S, '%s %s %s %d %d', 'delimiter', '_');
+
+
+numberOfNeurons = NaN(1, gmax);     
+
+path(path,pathname);
+for k = 1:nu
+     S = char(fileNames{k})
+     [a b c d g] = strread(S, '%s %s %s %d %d', 'delimiter', '_');
+
+        slice=imread(fileNames{k});
+        NON = count(slice)
+        numberOfNeurons(g) = NON;
+end;
+
+t=0;
+
+while t==0
+[pathstr, name, ext, versn] = fileparts(pathname);
+pathname=pathstr;
+t=isequal(name, sprintf('%s%s',char(b),char(c)));
+end
+
+mkdir(sprintf('%s\\Count',pathname));
+pathname1=(sprintf('%s\\Count',pathname));
+
+save(sprintf('%s\\numberOfneuronsFluo_%s_%s_%d',pathname1, char(b),char(c), gmax),'numberOfNeurons');         
+
+
